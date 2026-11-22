@@ -143,6 +143,42 @@ input[type=text]{width:100%;border:1.5px solid var(--line);background:var(--bg);
 @keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 @keyframes bob{50%{transform:translateY(-6px)}}
 
+.map.goals{grid-column:1/-1;color:#172B4D;background:linear-gradient(160deg,#F5B83D,#FF9E5E)}
+.gl{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:16px}
+.gt{background:rgba(255,255,255,.92);border-radius:20px;padding:14px;display:flex;flex-direction:column;gap:8px;border-bottom:5px solid rgba(0,0,0,.18)}
+.gt b{font-weight:600;font-size:.95rem;line-height:1.3}
+.gp{font-weight:600;color:#0A66C2;font-size:.85rem}
+.gs{font-size:.8rem;color:#4C5D78}
+.gt.s1 .gs{color:#0A4A8F;font-weight:600}
+.gt.s2{background:#DDF4E4}
+.gt.s2 .gs{color:#14532D;font-weight:600}
+.gb{margin-top:auto;min-height:44px;border:0;border-radius:14px;background:#0A66C2;color:#fff;font:600 .85rem "Lexend",sans-serif;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+.gt.s1 .gb{background:#172B4D}
+.gb:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
+.chest{background:rgba(23,43,77,.94);color:#fff;border-radius:20px;padding:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;font-size:.85rem}
+@media (max-width:1000px){.gl{grid-template-columns:1fr 1fr}.chest{grid-column:1/-1}}
+@media (max-width:560px){.gl{grid-template-columns:1fr}}
+
+.who{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;background:rgba(255,255,255,.12);border-radius:99px;padding:5px;margin-top:26px}
+.who i{position:absolute;top:5px;bottom:5px;left:5px;width:calc(50% - 5px);background:var(--gold);border-radius:99px;transition:transform .3s ease}
+.who[data-v="par"] i{transform:translateX(100%)}
+.who button{position:relative;z-index:1;border:0;background:transparent;color:#fff;min-height:46px;padding:0 34px;border-radius:99px;font:600 1rem "Lexend",sans-serif;cursor:pointer}
+.who button[aria-selected="true"]{color:#172B4D}
+#whoNote{margin-bottom:0}
+.add{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin-top:16px}
+.add label,.rin label{display:block;font-size:.8rem;font-weight:500}
+.add input,.add select,.rin input,.rin select{display:block;margin-top:4px;min-height:44px;border:2px solid rgba(23,43,77,.25);border-radius:12px;padding:0 12px;font:inherit;background:#fff;color:#172B4D}
+.add label:first-child{flex:1;min-width:180px}
+.add label:first-child input{width:100%}
+.add .gb{margin:0;padding:0 20px}
+.pl{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.map.rew{grid-column:1/-1;color:#fff;background:linear-gradient(160deg,#0A3F7A,#0A66C2)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.two .gt{color:#172B4D}
+.pb{height:10px;border-radius:99px;background:#EAF3FC;overflow:hidden}
+.pb i{display:block;height:100%;background:#0A66C2;border-radius:99px}
+@media (max-width:700px){.two{grid-template-columns:1fr}}
+
 /* glance */
 dl{display:grid;grid-template-columns:200px 1fr;gap:0;margin:34px 0 0;border-top:1.5px solid var(--line)}
 dt,dd{margin:0;padding:16px 0;border-bottom:1.5px solid var(--line)}
@@ -182,21 +218,6 @@ footer a{color:#fff}
  section{padding:60px 0}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.meter i{transition:none}.stop.now,.mascot img,.shake{animation:none}}
- /* Gamification: Streak, Badges & Red-Flag Quiz */
-.streak-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.22);border-radius:16px;padding:12px 16px;margin-top:24px}
-.streak-pill{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.95rem;color:var(--gold)}
-.badge-row{display:flex;gap:8px;flex-wrap:wrap}
-.badge{font-size:.78rem;font-weight:600;padding:4px 10px;border-radius:99px;background:rgba(255,255,255,.12);color:#C9D8EE;border:1px solid rgba(255,255,255,.2);opacity:.55;transition:all .25s ease}
-.badge.earned{background:var(--gold);color:#172B4D;border-color:var(--gold);opacity:1;transform:scale(1.04)}
-.quiz-opts{display:grid;gap:8px;margin-top:12px}
-.quiz-opt{width:100%;text-align:left;background:var(--bg);color:var(--text);border:1.5px solid var(--line);border-radius:12px;padding:10px 14px;font:inherit;font-size:.92rem;cursor:pointer;transition:border-color .2s,background-color .2s}
-.quiz-opt:hover{border-color:var(--sky)}
-.quiz-opt.right{background:#DDF4E4;border-color:#14A44D;color:#14532D;font-weight:600}
-.quiz-opt.wrong{background:#FEE2E2;border-color:#DC2626;color:#7F1D1D}
-@media (prefers-color-scheme:dark){
- :root:not([data-theme="light"]) .quiz-opt.right{background:#16382A;color:#BFF0D0}
- :root:not([data-theme="light"]) .quiz-opt.wrong{background:#3F1D24;color:#FECACA}
-}
 </style>
 </head>
 <body>
@@ -222,14 +243,6 @@ footer a{color:#fff}
      <a class="btn btn-gold" href="#how">See how it works</a>
      <a class="btn btn-ghost" href="#glance">Proposal summary</a>
     </div>
-    <div class="streak-bar" aria-label="Streak and earned badges">
- <span class="streak-pill" id="streakText">🔥 1-Day Streak</span>
- <div class="badge-row" id="badgeShelf">
-  <span class="badge" data-badge="starter">⭐ First Mission</span>
-  <span class="badge" data-badge="detective">🕵️ Scam Spotter</span>
-  <span class="badge" data-badge="champion">🏆 10-Pt Champ</span>
- </div>
-</div>
    </div>
    <div class="demo" aria-label="Interactive demo of today’s missions">
     <div class="mascot">
@@ -264,7 +277,7 @@ footer a{color:#fff}
   <h2>How it works</h2>
   <div class="steps">
    <div class="step"><h3>Learn</h3><p>Short articles, videos and real cases explain online risks. Each item shows how long it takes, so a 15-minute read is easy to plan.</p></div>
-   <div class="step"><h3>Earn</h3><p>Finishing a safety case, a language lesson or a screen-time goal adds XP and points. Levels and badges keep it fun.</p></div>
+   <div class="step"><h3>Earn</h3><p>Finishing a safety case, a language lesson or a parent-confirmed task adds XP and points. Levels and badges keep it fun.</p></div>
    <div class="step"><h3>Get rewarded</h3><p>Parents set the rewards. At 10 points, a teen might choose the family dinner. Parents see progress on their own dashboard.</p></div>
   </div>
  </div>
@@ -273,9 +286,12 @@ footer a{color:#fff}
 <section id="maps" class="maps">
  <div class="wrap">
   <h2>Learn by travelling, not scrolling</h2>
-  <p class="lead">Language lessons and safety articles live on two adventure maps. Finish a stop to unlock the next one and collect XP. Tap the glowing stop to try it.</p>
+  <p class="lead">Language lessons, safety articles and daily responsibilities live on three adventure maps. Finish a stop to unlock the next one and collect XP. Tap the glowing stop, or a task, to try it.</p>
   <div class="chips"><span>⭐ XP and levels</span><span>🔥 Daily streaks</span><span>🏅 Badges</span><span>🎁 Parent rewards</span></div>
-  <div class="maps-grid"><div class="map lang" id="mapLang"></div><div class="map safe" id="mapSafe"></div></div>
+  <div class="who" data-v="kid" role="tablist" aria-label="Choose who is using GoGen"><i aria-hidden="true"></i><button type="button" role="tab" id="w-kid" aria-selected="true" aria-controls="m-kid">Children</button><button type="button" role="tab" id="w-par" aria-selected="false" aria-controls="m-par">Parents</button></div>
+  <p class="lead" id="whoNote">Children’s view: learn a language, solve safety cases and submit daily tasks.</p>
+  <div class="maps-grid" id="m-kid" role="tabpanel" aria-labelledby="w-kid"><div class="map lang" id="mapLang"></div><div class="map safe" id="mapSafe"></div><div class="map goals" id="mapGoals"></div></div>
+  <div class="maps-grid" id="m-par" role="tabpanel" aria-labelledby="w-par" hidden><div class="map goals" id="mapParTasks"></div><div class="map rew" id="mapParRew"></div></div>
  </div>
 </section>
 
@@ -292,12 +308,16 @@ footer a{color:#fff}
    <div><h3>Language learning map</h3><p>Short lessons placed along an adventure map. Finish one stop to unlock the next, earning XP and badges on the way.</p></div>
    <div><h3>Goals and reflection</h3><p>Teens write short-term goals, long-term goals and how they picture life in ten years. Occasional prompts ask what they did today to get closer.</p></div>
    <div><h3>Help when it’s hard to talk</h3><p>Find official Sri Lankan child-protection and cyber-incident contacts, and reach out in writing instead of on a call.</p></div>
+   <div><h3>Daily Goals map</h3><p>See the tasks your parent set, mark them done and submit them. Points arrive once a parent confirms, and the treasure chest opens at the end.</p></div>
+   <div><h3>An AI husky companion</h3><p>A friendly husky for chats and encouragement. It is always clearly AI, and it points you to a trusted adult when something serious comes up.</p></div>
   </div>
   <div class="feat" id="p-parent" role="tabpanel" aria-labelledby="t-parent" hidden>
    <div><h3>Progress dashboard</h3><p>See points earned and the awareness and study activities your child has completed.</p></div>
    <div><h3>Screen-time view</h3><p>Where the device and its permissions allow it, see daily screen time and the most-used apps.</p></div>
    <div><h3>Screen-time goals</h3><p>Agree a lower limit for an app, such as two hours of YouTube down to one, and award points when it is met.</p></div>
    <div><h3>Your own rewards</h3><p>Choose what points are worth: a family dinner, an outing or anything your family agrees on.</p></div>
+   <div><h3>Daily task management</h3><p>Create daily responsibilities, give each one its points, and confirm tasks when they are done. Statuses read pending, submitted or confirmed.</p></div>
+   <div><h3>Guidance, not surveillance</h3><p>Built for positive reinforcement and cooperation, so progress is something you celebrate together.</p></div>
   </div>
  </div>
 </section>
@@ -323,21 +343,6 @@ footer a{color:#fff}
     <button class="btn btn-blue" id="dreamBtn" type="button" style="margin-top:14px">Show my prompt</button>
     <div class="out" id="dreamOut" aria-live="polite">Your daily prompt will appear here.</div>
    </div>
-  </div>
-  <div class="tool">
-    <h3>Future-self prompt</h3>
-    <p class="note">At sign-up, teens describe their goals. GoGen later turns them into a daily question.</p>
-    <label for="dream">Where do you want to be in ten years?</label>
-    <input type="text" id="dream" placeholder="e.g. become a doctor, own my own studio" maxlength="60">
-    <button class="btn btn-blue" id="dreamBtn" type="button" style="margin-top:14px">Show my prompt</button>
-    <div class="out" id="dreamOut" aria-live="polite">Your daily prompt will appear here.</div>
-   </div>
-
-   <div class="tool">
-    <h3>Spot the Red Flag</h3>
-    ...
-   </div>
-
   </div>
  </div>
 </section>
@@ -371,7 +376,7 @@ footer a{color:#fff}
   <dl>
    <dt>Who it’s for</dt><dd>Teenagers aged 11–16, and their parents or guardians.</dd>
    <dt>The problem</dt><dd>Unsafe device habits and low priority given to studies.</dd>
-   <dt>Our solution</dt><dd>A gamified points-and-rewards platform with adventure maps for digital safety and language learning.</dd>
+   <dt>Our solution</dt><dd>A gamified points-and-rewards platform with three adventure maps for digital safety, language learning and daily responsibilities.</dd>
    <dt>Expected impact</dt><dd>Fewer teenagers drawn into cyber-crime or online harm, and more time spent learning.</dd>
    <dt>Purpose</dt><dd>To obtain approval from the relevant authorities.</dd>
   </dl>
@@ -433,7 +438,7 @@ footer a{color:#fff}
    cur=i;draw();
   }
   function draw(){
-   var xp=st*10,h=N*RH+16,p="";
+   var xp=st*10,h=N*RH+16,p="";(window.PROG=window.PROG||{})[d.id]=st;
    d.nodes.forEach(function(n,i){var x=xs(i),y=i*RH+44;p+=i?" C"+xs(i-1)+" "+(y-RH/2)+" "+x+" "+(y-RH/2)+" "+x+" "+y:"M"+x+" "+y});
    el.innerHTML='<div class="map-head"><h3>'+d.icon+' '+d.title+'</h3><span class="xp">⭐ '+xp+' XP · Lv '+(1+Math.floor(xp/20))+'</span></div><p class="sub">'+d.sub+'</p><div class="path" style="height:'+h+'px"><svg viewBox="0 0 280 '+h+'" preserveAspectRatio="none" aria-hidden="true"><path d="'+p+'"/></svg></div><div class="say" aria-live="polite"></div><button type="button" class="reset">↺ Restart map</button>';
    var path=el.querySelector(".path");
@@ -453,6 +458,68 @@ footer a{color:#fff}
   }
   draw();
  });
+
+ // daily goals map: teen submits, parent confirms
+ (function(){
+  var T=[["Tidy your bedroom",3],["Help with cooking",2],["Organise school bag",2],["20 min study session",3]],S=[0,0,0,0],el=document.getElementById("mapGoals"),START="A parent assigns the tasks. The teen finishes them and submits for confirmation.",say=START;
+  var ST=["To do","Submitted, waiting for a parent","Confirmed ✓"],AC=["Teen: mark done","Parent: confirm"];
+  function draw(){
+   var pts=0,h="";
+   T.forEach(function(t,i){
+    if(S[i]===2)pts+=t[1];
+    h+='<div class="gt s'+S[i]+'"><b>'+t[0]+'</b><span class="gp">+'+t[1]+' pts</span><span class="gs">'+ST[S[i]]+'</span>'+(S[i]<1?'<button type="button" class="gb" data-i="'+i+'">'+AC[S[i]]+'</button>':'')+'</div>';
+   });
+   var open=pts>=10;
+   h+='<div class="chest"><svg width="84" height="70" viewBox="0 0 84 70" aria-hidden="true"><rect x="6" y="30" width="72" height="34" rx="6" fill="#8A5A2B"/>'+(open?'<circle cx="42" cy="22" r="12" fill="#FFD86B"/><path d="M6 30 14 8h56l8 22z" fill="#B87333"/>':'<path d="M6 34a36 28 0 0172 0z" fill="#B87333"/>')+'<rect x="37" y="30" width="10" height="14" rx="2" fill="#F5B83D"/></svg><b>Treasure chest</b><span>'+(open?"Opened! 10 points: choose the family dinner.":pts+" of 10 points confirmed. Reward: choose the family dinner.")+'</span></div>';
+   el.innerHTML='<div class="map-head"><h3>🎒 Daily Goals and Responsibilities</h3><span class="xp">⭐ '+pts+' pts</span></div><p class="sub">Parents assign tasks. Teens finish them and submit. Parents confirm to release the points.</p><div class="gl">'+h+'</div><div class="say" aria-live="polite" style="margin-top:14px"></div><button type="button" class="reset">↺ Restart map</button>';
+   el.querySelector(".say").textContent=say;
+   el.querySelectorAll(".gb").forEach(function(b){b.onclick=function(){var i=+b.dataset.i;S[i]++;say=S[i]===1?"Submitted! A parent now needs to confirm “"+T[i][0]+"”.":"Confirmed! +"+T[i][1]+" points added to the treasure chest.";draw();var n=el.querySelector('.gb[data-i="'+i+'"]');if(n)n.focus({preventScroll:true})}});
+   el.querySelector(".reset").onclick=function(){T.length=4;S.length=4;S.fill(0);say=START;draw();if(window.drawParent&&!document.getElementById("m-par").hidden)window.drawParent()};
+  }
+  window.GD={T:T,S:S,say:function(m){say=m},draw:draw};
+  draw();
+ })();
+
+ // parent view: assign and confirm tasks, set rewards
+ (function(){
+  var tk=document.getElementById("mapParTasks"),rw=document.getElementById("mapParRew"),RN="Choose the family dinner",RP=10,note="Tasks your child submits appear here for confirmation.";
+  var ESC={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"};
+  function esc(s){return s.replace(/[&<>"]/g,function(c){return ESC[c]})}
+  function pts(){var p=0;GD.T.forEach(function(t,i){if(GD.S[i]===2)p+=t[1]});return p}
+  function row(l,n,t){return '<span class="gs">'+l+': '+n+' of '+t+'</span><div class="pb"><i style="width:'+(t?n/t*100:0)+'%"></i></div>'}
+  function drawT(){
+   var h="",WT=["Waiting for your child","Submitted. Please confirm.","Confirmed ✓"];
+   GD.T.forEach(function(t,i){var s=GD.S[i];h+='<div class="gt s'+s+'"><b>'+t[0]+'</b><span class="gp">+'+t[1]+' pts</span><span class="gs">'+WT[s]+'</span>'+(s===1?'<button type="button" class="gb" data-i="'+i+'">Confirm</button>':'')+'</div>'});
+   tk.innerHTML='<div class="map-head"><h3>📋 Assign and confirm tasks</h3><span class="xp">⭐ '+pts()+' pts confirmed</span></div><p class="sub">Create daily responsibilities, give each one its points, and confirm them when they are done.</p><div class="gl pl">'+h+'</div><div class="add"><label>New task<input id="nt" type="text" maxlength="40" placeholder="e.g. Water the plants"></label><label>Points<select id="np"><option>1</option><option selected>2</option><option>3</option></select></label><button type="button" class="gb" id="addT">Assign task</button></div><div class="say" aria-live="polite" style="margin-top:14px"></div>';
+   tk.querySelector(".say").textContent=note;
+   tk.querySelectorAll(".gb[data-i]").forEach(function(b){b.onclick=function(){var i=+b.dataset.i;GD.S[i]=2;GD.say("Confirmed! +"+GD.T[i][1]+" points added to the treasure chest.");note="Confirmed. The points are now released.";GD.draw();drawT();drawR()}});
+   tk.querySelector("#addT").onclick=function(){
+    var v=tk.querySelector("#nt").value.trim();
+    if(!v)note="Type a task first.";
+    else if(GD.T.length>=8)note="That’s plenty for one day. Confirm a few first.";
+    else{GD.T.push([esc(v),+tk.querySelector("#np").value]);GD.S.push(0);GD.draw();note="Assigned! Your child will see it on their map."}
+    drawT();drawR();
+   };
+  }
+  function drawR(){
+   var p=pts(),pg=window.PROG||{},done=GD.S.filter(function(s){return s===2}).length,ok=p>=RP;
+   rw.innerHTML='<div class="map-head"><h3>🎁 Rewards and progress</h3><span class="xp">'+(ok?"Reward unlocked":p+" of "+RP+" pts")+'</span></div><p class="sub">Set what points are worth and see how your child is doing on each map.</p><div class="two"><div class="gt"><b>Reward</b><div class="rin" style="display:flex;gap:10px;flex-wrap:wrap"><label style="flex:1;min-width:150px">Reward<input id="rn" type="text" maxlength="40" value="'+esc(RN)+'" style="width:100%"></label><label>Points<select id="rp"><option>5</option><option>10</option><option>15</option></select></label></div><div class="pb"><i style="width:'+Math.min(100,p/RP*100)+'%"></i></div><span class="gs">'+(ok?"Unlocked: ":"Next reward: ")+esc(RN)+'</span></div><div class="gt"><b>Progress overview</b>'+row("Safety Detective stops",pg.mapSafe||0,5)+row("Language Island stops",pg.mapLang||0,6)+row("Daily tasks confirmed",done,GD.T.length)+'</div></div>';
+   rw.querySelector("#rp").value=RP;
+   rw.querySelector("#rp").onchange=function(){RP=+this.value;drawR()};
+   rw.querySelector("#rn").onchange=function(){RN=this.value.trim()||RN;drawR()};
+  }
+  window.drawParent=function(){drawT();drawR()};
+  window.drawParent();
+ })();
+
+ // children / parents slide switch
+ var who=document.querySelector(".who"),wb=who.querySelectorAll("button"),WN={kid:"Children’s view: learn a language, solve safety cases and submit daily tasks.",par:"Parents’ view: assign tasks, confirm them to release the points, and set the reward."};
+ wb.forEach(function(b){b.onclick=function(){
+  var par=b.id==="w-par";who.dataset.v=par?"par":"kid";
+  wb.forEach(function(o){var on=o===b;o.setAttribute("aria-selected",on);document.getElementById(o.getAttribute("aria-controls")).hidden=!on});
+  document.getElementById("whoNote").textContent=par?WN.par:WN.kid;
+  if(par)window.drawParent();
+ }});
 
  // back-to-top button appears after scrolling
  var btnTop=document.getElementById("toTop");
@@ -489,4 +556,3 @@ footer a{color:#fff}
 </script>
 </body>
 </html>
-
